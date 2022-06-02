@@ -63,7 +63,7 @@
 
 * 주문서
     * 주문상품정보, 주문자정보(회원정보), 배송정보입력, 결제수단 선택
-    * ![04order](https://user-images.githubusercontent.com/98933092/171577583-061c785e-2096-43b1-9b1b-65b9ac3f2218.png)
+    * ![04order](https://user-images.githubusercontent.com/98933092/171590503-d1f14641-23cd-4c62-a5c9-cdef441cd40c.png)
 
 * Mypage-주문 목록
     * 주문목록
