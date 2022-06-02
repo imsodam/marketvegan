@@ -1,11 +1,13 @@
 # marketvegan
 비건 쇼핑몰 프로젝트
+<br><br>
 
 # 개발 환경 및 개발 언어
 * 개발 환경
     * 이클립스, Tomcat/9.0.56
 * 개발 언어
-    * HTML, CSS, javascript, Jquery, JAVA 8, JSP, Oracle 
+    * HTML, CSS, javascript, Jquery, JAVA 8, JSP, Oracle, Spring
+<br><br>
 
 # 구현기능
 * 회원 관리
@@ -40,6 +42,7 @@
 
 * 관리자
     * 모든 관리자 페이지는 관리자 로그인 했을때만 접근 가능
+<br><br>
 
 # 캡쳐 이미지
 * 회원 가입
@@ -94,3 +97,4 @@
 * 관리자-결제 관리
     * 결제 목록
     * ![11admin_pay](https://user-images.githubusercontent.com/98933092/171577613-24b538fe-ae90-4e6f-ada8-eea638fa602b.png)
+
