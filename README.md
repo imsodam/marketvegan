@@ -9,6 +9,10 @@
     * HTML, CSS, javascript, Jquery, JAVA 8, JSP, Oracle, Spring
 <br><br>
 
+# 모델링
+![erd](https://user-images.githubusercontent.com/98933092/171592311-3a63d3c6-db58-48c6-8a9b-14a9671b19b3.png)
+<br><br>
+
 # 구현기능
 * 회원 관리
     * 회원 가입/수정/탈퇴
