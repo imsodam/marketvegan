@@ -4,9 +4,13 @@
 
 # 개발 환경 및 개발 언어
 * 개발 환경
-    * 이클립스, Tomcat/9.0.56
+    * eclipse, jdk1.8, springframework 
 * 개발 언어
-    * HTML, CSS, javascript, Jquery, JAVA 8, JSP, Oracle, Spring
+    * HTML, CSS, javascript, Jquery, JAVA, JSP, mybatis
+* 서버
+    * Tomcat/9.0.56
+* DATABASE
+    * Oracle
 <br><br>
 
 # 모델링
@@ -30,7 +34,7 @@
 
 * 장바구니
     * 추가(장바구니 담기)
-    * 수량 변경, 삭제 비동기 처리
+    * 수량 변경/삭제 비동기(ajax) 처리
     * 선택주문(전체선택 or 개별선택)
 
 * 주문 기능
@@ -56,27 +60,28 @@
 * 상품 목록
     * 카테고리별 상품조회
     * 베스트, 특가상품 목록
-    * 네비게이션의 검색기능으로 모든페이지에서 상품 검색
-    * ![02product](https://user-images.githubusercontent.com/98933092/171577572-819b6384-dfd3-48c3-a8f2-02fddf67f49a.png)
+    * 공통 네비게이션의 검색기능으로 모든페이지에서 상품 검색
+    * ![02product](https://user-images.githubusercontent.com/98933092/171644387-a7dae799-1d51-42c7-be8b-f3aeb5e84de9.png)
 
 * 상품 상세 및 장바구니
     * 상품 상세페이지에서 장바구니 담기
-    * 장바구니에서 비동기 수량 변경/삭제
+    * 장바구니에서 비동기(ajax) 수량 변경/삭제
     * 전체 or 부분 체크후 주문하기
-    * ![03cart](https://user-images.githubusercontent.com/98933092/171577579-9cf506b5-35c3-41f3-a81f-6ddbd9b68dd9.png)
+    * ![03cart](https://user-images.githubusercontent.com/98933092/171644396-ee722fd9-9caf-41a5-8454-351d15a0dae7.png)
 
 * 주문서
-    * 주문상품정보, 주문자정보(회원정보), 배송정보입력, 결제수단 선택
-    * ![04order](https://user-images.githubusercontent.com/98933092/171590503-d1f14641-23cd-4c62-a5c9-cdef441cd40c.png)
+    * 주문상품정보, 주문자정보(회원정보), 결제수단 선택
+    * 배송정보입력 주소 Open API
+    * ![04order](https://user-images.githubusercontent.com/98933092/171644402-75a3825b-1a79-4e09-b2e8-4912a5468f10.png)
 
 * Mypage-주문 목록
     * 주문목록
-    * ![05my_order_list](https://user-images.githubusercontent.com/98933092/171577592-5bd94c55-6783-45d5-96cf-942ab6719671.png)
+    * ![05my_order_list](https://user-images.githubusercontent.com/98933092/171644405-7b7198d3-489f-4107-b051-afa71efb9878.png)
 
 * Mypage-주문 상세
     * 주문상품, 배송정보, 결제정보 확인
     * 주문취소, 배송지변경 (배송준비중 전단계까지만 버튼 보여짐)
-    * ![06my_order_detail](https://user-images.githubusercontent.com/98933092/171577596-4dba2798-eeb9-49c6-88d7-2158c3641c14.png)
+    * ![06my_order_detail](https://user-images.githubusercontent.com/98933092/171644414-dd82df85-2831-433e-95c6-04d647659ab8.png)
 
 * 관리자-회원 관리
     * 아이디, 이름 등으로 검색 조회
@@ -86,7 +91,7 @@
 * 관리자-상품 관리
     * 상품명 검색 or 카테고리별 조회
     * 상품 등록, 수정, 삭제
-    * ![08admin_product](https://user-images.githubusercontent.com/98933092/171577605-9b018fe4-ef4c-4241-9cc4-caccbc5291c0.png)
+    * ![08admin_product](https://user-images.githubusercontent.com/98933092/171644420-4bf11b42-0164-4b3d-a6bf-417a33fa6cd5.png)
 
 * 관리자-주문 관리(목록)
     * 주문 날짜, 주문상태, 키워드 검색 조회
