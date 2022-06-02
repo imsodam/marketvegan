@@ -1,0 +1,130 @@
+@charset "UTF-8";
+/* 회원정보 전체 틀 */
+.mypage_top {
+    width: 100%;
+    padding: 50px 0;
+    margin-bottom: -20px;
+    background-color: #f7f7f7;
+}
+
+/* 회원정보 내부 틀 */
+.mypage_top .mypagetop_user {
+    overflow: hidden;
+    width: 1050px;
+    margin: 0 auto;
+}
+
+.mypage_top .inner_mypagetop {
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+}
+
+.mypage_top .grade_user {
+    width: 100%;
+    padding: 30px;
+    background-color: #fff;
+}
+
+.mypage_top .grade_wrap {
+    display: flex;
+    align-items: center;
+}
+
+/* 회원정보 이름 */
+.mypage_top .grade_wrap .name {
+    margin-left: 20px;
+    font-size: 20px;
+    overflow: hidden;
+    float: left;
+    max-width: 263px;
+    font-weight: 700;
+    color: #333;
+    line-height: 28px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+/* 마이페이지 */
+.mypage_top .grade_user .grade_wrap2 {
+    margin-left: 20px;
+    font-size: 15px;
+    overflow: hidden;
+    float: left;
+    max-width: 263px;
+    font-weight: 500;
+    color: #333;
+    line-height: 28px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+/* 마이비건 전체 틀 */
+.page_aticle.mypage {
+    padding-top: 65px;
+   	overflow: hidden;
+}
+.page_aticle.mypage ul{
+	margin-block-start: 1em;
+}
+
+.page_aticle {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/* 마이비건 글씨 */
+#snb {
+    float: left;
+    width: 200px;
+}
+
+#snb .tit_snb {
+    padding: 5px 0 35px 1px;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 35px;
+    color: #333;
+    letter-spacing: -1px;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+/* 왼쪽메뉴 틀 */
+#snb .inner_snb {
+    border: 1px solid #f2f2f2;
+    border-bottom: 0;
+}
+
+ul {
+    list-style-type: none;
+    display: block;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+#snb .list_menu li {
+    border-bottom: 1px solid #f2f2f2;
+}
+
+#snb .list_menu li a {
+    display: block;
+    overflow: hidden;
+    padding: 14px 0 16px 20px;
+    background: #fff url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11.svg) no-repeat 174px 52%;
+    background-size: 6px 11px;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    letter-spacing: -.3px;
+}
+
+#snb .list_menu li.on a, #snb .list_menu li a:hover {
+    background: #fafafa url() no-repeat 174px 52%;
+    background-size: 6px 11px;
+    font-weight: 700;
+    color: #0e5739;
+}

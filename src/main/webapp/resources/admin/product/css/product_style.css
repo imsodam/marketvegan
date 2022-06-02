@@ -1,0 +1,58 @@
+@charset "UTF-8";
+*{box-sizing: border-box;}
+body{margin:0;padding:0;font-family: 'Nanum Gothic', sans-serif;}
+ul,li{list-style: none;margin:0;padding:0;}
+a{text-decoration:none;}
+table{border-collapse: collapse;}
+form{margin:0;}
+
+/*  전체 */
+.slideMenu {overflow: hidden; float:left; margin: 30px 220px 150px 250px; width: 60%;}
+.slideMenu li {float: left; position: relative; width: calc(100% / 5); text-align: center;}
+.slideMenu li a {display: block; position: relative; font-size: 25px; transition: all .5s;}
+.slideMenu li a:visited{ color: #424242;}
+.slideMenu li a:hover, .slideMenu .current{color: #424242; font-weight: 800;}
+.slideMenu a:hover:after { transform: scaleX(1); }
+.slideMenu li a:after{display:block; content: ''; border-bottom: solid 2px #424242; transform: scaleX(0); transition: transform 250ms ease-in-out;padding-bottom:5px;}
+
+/*  상품등록 리스트 */
+.search_box {border:2px solid #0e5739;padding:20px;width:540px;margin:0 auto;}
+.search_box div{text-align:center;}
+.search_box div:nth-of-type(2){margin-top:10px;}
+.search_box input,.search_box select, .search_box input{padding:0 10px; height:30px;border:1px solid #dadada; vertical-align:middle;}
+.search_box input[type=text] {width:315px;}
+
+.total_count{margin-top:5px;text-align:center;}
+
+.list_tb{width:100%;margin-top:50px;}
+.list_tb th{background-color:#f0f2f1;}
+.list_tb td,.list_tb th{border:1px solid #dadada;padding:5px;text-align:center;}
+.list_tb .price{text-align:right;}
+.list_tb slelect{height:21px;border:1px solid #dadada;}
+.list_tb i{font-size:24px;color:#0e5739;}
+.list_tb .go_detail{cursor:pointer;}
+.list_tb select{border:1px solid #dadada;height:26px;}
+.list_tb input[type='text']{border:1px solid #dadada;height:26px;width:100px;vertical-align:middle;text-align:center;}
+.list_tb input[type='button']{border:1px solid #dadada;height:26px;vertical-align:middle;text-align:center;cursor:pointer;}
+.abutton, .abutton:link, .abutton:visited, .abutton:active, input[type=button] { background-color: #383838; border: 1px solid #888888; color: #ffffff; cursor: pointer; letter-spacing: -1px; padding: 8px 8px; margin: 2px 3px; width: auto; word-break: keep-all; border-radius: 5px;text-decoration: none;font-size: 15px; }
+.blue {color: #0e5739;}
+.basketrowcmd {margin: 20px 10px 0 10px;}
+.cmd a, .cmd span { padding: 12px 30px; box-sizing: border-box; margin-top: 10px; font-size: 1.2em; color: #000; background-color: #f4f4f4; border: 1px solid #e0e0e0; text-align: center;}
+.cmd.small a, .cmd.small span { padding: 6px 20px; font-size: 0.8125em;}
+ 
+/* 상품등록 */
+.product_tb {margin: 20px auto;}
+.item_res {text-align: center; font-size: 30px;}
+.item_res2{line-height:40px;}
+.item_res3 {padding:20px;}
+.product_tb td{padding:0 10px;}
+.product_tb input[type='text'],.product_tb select{border:1px solid #dadada; width:250px;height:26px;}
+ 
+
+/*  상품검색 */
+.gnb_search{position:absolute;left:580px;top:200px;width:242px;margin-top: 30px;}
+.gnb_search .inp_search{width:242px;height:36px;padding:0 5px 0 14px;border:1px solid #eeeeee;border-radius:10px;background-color:#eeeeee;font-family: 'Noto Sans';font-weight:400;font-size:12px;color:#666;line-height:16px;outline:none}
+.gnb_search .inp_search.focus{background-color:#fff;color:#333;}
+.gnb_search .btn_search{position:absolute;right:5px;top:3px;width:30px;height:30px}
+
+

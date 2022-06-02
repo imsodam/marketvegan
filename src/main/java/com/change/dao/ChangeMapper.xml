@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="change">
+
+
+
+<!-- 주문상태 변경 -->
+<update id="updateOrderState" parameterType="map">
+	update orders set 
+		order_state=#{order_state} 
+	where order_num=#{order_num}
+</update>
+
+<!-- 송장번호 입력 -->
+<update id="updateInvoice" parameterType="map">
+	update orders set 
+		order_invoice=#{order_invoice} 
+	where order_num=#{order_num}
+</update>
+
+<!-- 배송완료날짜 입력 -->
+<update id="updateDeliveryDate" parameterType="String">
+	update orders set 
+		order_delivery_date=sysdate 
+	where order_num=#{order_num}
+</update>
+
+<!-- 배송지 변경-->
+<update id="updateAddress" parameterType="OrdersVO">
+	update orders set 
+		order_recipient=#{order_recipient} ,
+		order_phone=#{order_phone}, 
+		order_zipcode=#{order_zipcode}, 
+		order_addr1=#{order_addr1}, 
+		order_addr2=#{order_addr2} 
+	where order_num=#{order_num}
+</update>
+
+<!-- 변경테이블 정보 가져오기 -->
+<select id="getChange" parameterType="String" resultType="ChangeVO">
+	select change_date,delivery_date, change_content, 
+			change_state, change_reason, order_num, 
+			get_code_name(change_content) as change_content_name,
+			get_code_name(change_state) as change_state_name,
+			get_code_name(change_reason) as change_reason_name
+	 from change 
+	 where order_num=#{order_num}
+</select>
+
+<!-- 변경테이블 입력 -->
+<insert id="insertChange" parameterType="ChangeVO">
+	insert into 
+	change (
+		change_num,change_date,delivery_date,change_content,
+		change_state,change_reason,order_num
+		)
+	values(
+		CHANGE_SEQ.NEXTVAL,sysdate,#{delivery_date, jdbcType=DATE},#{change_content},
+		#{change_state},#{change_reason, jdbcType=VARCHAR},#{order_num}
+	)
+</insert>
+<!-- 변경테이블 수정 -->
+<update id="updateChange" parameterType="map">
+	update change set 
+		change_date=sysdate,
+		change_state=#{change_state}
+	where order_num=#{order_num}
+</update>
+</mapper>

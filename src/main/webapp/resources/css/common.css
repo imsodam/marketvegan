@@ -1,0 +1,106 @@
+@charset "utf-8";
+
+CSS Reset
+
+html, body, div , span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video{margin: 0; padding: 0; border: 0; font-size: 100%;}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section{display: block;}
+body{font-family: "돋움", Dotum,"굴림",Gulim, sans-serif; font-size: 16px;
+  color: #333}
+ol, ul, li {list-style: none;}
+table{border-collapse: collapse; border-spacing: 0;}
+address{font-style: normal}
+a {color: #333; text-decoration: none; font-family: 'Nanum Gothic', sans-serif;}
+img {border: 0; vertical-align: top; width:100%}
+*{box-sizing: border-box;}
+.hidden {display: block; position: absolute;
+ left: -1000%; width: 1px; height: 1px;
+  overflow: hidden; color: #fff}
+
+.clear {clear: both;}
+
+/* 헤드라인 폰트 연결*/
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+/* font-family: 'Nanum Gothic', sans-serif; font-weigh:700 */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+/* font-family: 'Nanum Myeongjo', serif; font-weigh: 700 */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+/* font-family: 'Roboto', sans-serif; font-weigh: 400 */
+
+/* 헤더공통영역 */
+.wrap {width: 100%; overflow: hidden;}
+body, input, select, textarea, button {font-family: noto sans,malgun gothic,AppleGothic,dotum;   color: #4c4c4c; font-size: 12px; max-width: 100%;}
+
+#header,#container {position:relative}
+#header::before {content: ''; width: 100%; height: 40px; background-color: #0e5739;
+position: absolute; top: 0; left: 0; display: block;}
+
+#userMenu {width:1050px;margin:0 auto}
+#userMenu *{font-family:'Nanum Gothic', sans-serif;font-weight:400;font-size: 18px; color:#fff;}
+#userMenu:after {content:"";display:block;overflow:hidden;width:100%;height:0;font-size:0;text-indent:-9999px}
+
+#userMenu .list_menu {position: relative; display: flex; justify-content: flex-end; line-height: 1; z-index: 150; padding-top: 5px;}
+#userMenu .list_menu li {padding:8px;}
+
+
+#headerLogo {width: 100%;margin:10px 0;text-align: center;}
+/* #headerLogo a{display:block; width: 190px; height: 100px; overflow: hidden; background: url(/marketvegan/img/logo/logo2.png) 0 0 no-repeat; font-size: 0; text-indent: -999px; margin: 0 auto;}*/
+#headerLogo .logo img { height: 80px;width:auto;}
+ #container{box-shadow: 0 3px 15px rgb(0 0 0 / 15%);background-color: #ffffff;}
+.nav_fix{position:fixed;top:0;width: 100%;background-color:#ffffff;z-index:999;box-shadow: 0 3px 15px rgb(0 0 0 / 15%);}
+.nav_area{position:absolute;height:80px;}
+.nav_area_fix{position:relative;}
+#gnb ul{width:800px;overflow:hidden;z-index:999;}
+#gnb ul>li{float:left;line-height:80px;width:20%;text-align:center;}
+#gnb .inner_gnbkurly{position:relative;width:1200px;height:80px;margin:0 auto;}
+#gnb .inner_gnbkurly ul.gnb { font-family:'Nanum Gothic', sans-serif;font-weight:600; font-size: 20px;}
+
+#gnb .gnb_search{position:absolute;right:130px;top:25px;width:242px}
+#gnb .gnb_search .inp_search{width:242px;height:36px;padding:0 5px 0 14px;border:1px solid #e0f2f1;border-radius:18px;background-color:#e0f2f1;font-family: 'Noto Sans';font-weight:400;font-size:12px;color:#666;line-height:16px;outline:none}
+#gnb .gnb_search .inp_search.focus{background-color:#fff;color:#333;}
+#gnb .gnb_search .btn_search{position:absolute;right:5px;top:3px;width:30px;height:30px}
+  
+#gnb .cart_count{position:absolute;right:37px;top:25px}
+#gnb .cart_count .inner_cartcount{text-align:center;font-weight:400}
+#gnb .cart_count .btn_cart{display:block;width:36px;height:0px;}
+#gnb .cart_count img{display:block;width:30px;height:30px;margin:0 auto;}
+
+
+/* 푸터공통영역 */
+#footerArea{width:100%; position: relative; background: #9e9e9e;margin-top:30px;}
+#footerArea .footer_inner{width: 1200px; margin: 0 auto;display: flex; justify-content: flex-start; padding: 50px 0;}
+#footerArea .footer_logo{width: 200px;}
+#footerArea .footer_menu{width: 814px; margin: 0 auto;}
+#footerArea .footer_menu ul{overflow: hidden; margin: 20px 0;}
+#footerArea .footer_menu ul a{color: #ccc;}
+#footerArea .footer_menu li{float: left; margin-right: 35px; position: relative;}
+#footerArea .footer_menu li::after{content: ''; display: block; width: 1px; height:14px; 
+  background: #ccc; position: absolute; top: 2px; right: -17px;}
+#footerArea .footer_menu .last{margin-right: 0;}
+#footerArea .footer_menu .last::after{display: none;}
+#footerArea .footer_menu p {line-height: 2.5em;  color: #ccc;}
+#footerArea .addr {color: #ccc;}
+#footerArea .addr_bar {color: #ccc;}
+
+
+#content{width:1200px;margin:0 auto;}
+
+
+/*  페이징 */
+.page_box{text-align:center;font-size:0;margin-top:30px;}
+.page_box a,.page_box span{border:1px solid #dadada;line-height:30px;width:30px;display:inline-block;font-size:14px;margin-left:-1px;color:#0e5739;}
+.page_box span{border:1px solid #0e5739;background-color:#0e5739;color:#ffffff;}
+.page_box :first-child{border-radius: 4px 0 0 4px;}
+.page_box :last-child{border-radius: 0 4px 4px 0;}

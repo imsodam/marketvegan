@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="order">
+
+<!-- 주문번호 중복확인 -->
+<select id="orderNumCheck" parameterType="String" resultType="int">
+	select count(order_num)
+	from orders 
+	where order_num=#{order_num}
+</select>
+
+<!-- 주문1 orders insert -->
+<insert id="insertOrders" parameterType="OrdersVO">
+	insert into orders (
+			order_num,order_date,order_price,order_delivery_charge,
+			order_recipient,order_zipcode,order_addr1,order_addr2,
+			order_state,user_id,order_phone
+		)
+		values(
+			#{order_num},sysdate,#{order_price},#{order_delivery_charge},
+			#{order_recipient},#{order_zipcode},#{order_addr1},#{order_addr2},
+			#{order_state},#{user_id},#{order_phone}
+		)
+</insert>
+
+<!-- 주문2 payment insert -->
+<insert id="insertPayment" parameterType="PaymentVO">
+	insert into payment 
+	values(
+		pay_seq.NEXTVAL,sysdate,
+		#{payment_type},#{payment_price},#{order_num},
+		#{card_type},#{card_month})
+</insert>
+
+<!-- 주문3 orderPrd insert -->
+<update id="insertOrderPrd" parameterType="java.util.List">
+	insert into order_product (order_product_num,order_product_count,order_product_price,order_num,product_code)
+	select o_prd_seq.NEXTVAL as order_product_num, a.*
+	from(
+	<foreach collection="list" item="item" index="index" separator="UNION ALL ">
+		select #{item.cart_count} as order_product_count,
+			#{item.product_price} as order_product_price,
+			#{item.order_num} as order_num,
+			#{item.product_code} as product_code
+		from dual
+	</foreach>)a
+</update>
+
+<!-- 주문4 product update(판매수) -->
+<update id="updateSalesCount" parameterType="map">
+	update product set 
+	product_sales=product_sales+1 
+	where product_code in (${product_code})
+</update>
+
+<!-- 주문5 cart delete -->
+<delete id="deleteCarts" parameterType="String">
+ 	delete from cart 
+ 	where cart_num in (${cart_num})
+</delete>
+
+<!-- 주문목록 총 레코드수 -->
+<select id="getOrdersCount" parameterType="map" resultType="int">
+	select count(*) 
+	from orders o, user_table u 
+	<where>
+		o.user_id=u.user_id 
+		and order_date between #{sDay} and TO_CHAR(TO_DATE(#{eDay},'YYYY-MM-DD')+1,'YYYY-MM-DD')
+		<if test="keyWord!=null and keyWord!=''">
+			<if test="keyField=='user_id'">
+				and o.${keyField} like '%' || #{keyWord} || '%'
+			</if>
+			<if test="keyField!='user_id'">
+				and ${keyField} like '%' || #{keyWord} || '%'
+			</if>
+		</if>
+		<if test="order_state!=null and order_state!='' and order_state!='all'">
+			and order_state=#{order_state}
+		</if>
+		<if test="user_id!=null and user_id!=''">
+			and o.user_id=#{user_id}
+		</if>
+	</where>
+</select>
+
+<!-- 주문목록 마이페이지 -->
+<select id="getOrderList" parameterType="map" resultType="OrderListVO">
+	select *
+            from ( select a.*, rownum rnum
+                from (select order_date,order_num,order_price,order_delivery_charge,
+                			order_state,tb_p.product_name as order_product_name , 
+                			tb_p.product_img1 as order_product_img1,
+                			get_code_name(order_state) as order_state_name
+					from orders tb_o , product tb_p 
+					where tb_p.product_code = (
+					select min(tb_op.product_code) keep(dense_rank last order by tb_op.order_product_num desc)
+					from order_product tb_op 
+					where tb_op.order_num = tb_o.order_num
+					)
+					and user_id=#{user_id} and order_date between #{sDay} and TO_CHAR(TO_DATE(#{eDay},'YYYY-MM-DD')+1,'YYYY-MM-DD')
+					order by order_date desc)a)
+  <![CDATA[
+    where rnum >=#{start} AND rnum <=#{end}
+    ]]>
+
+</select>
+
+<!-- 주문목록 어드민-->
+<select id="getAdminOrderList" parameterType="map" resultType="OrderListVO">
+	select *
+            from ( select a.*, rownum rnum
+                from (
+                	select order_date,order_num,order_price,order_delivery_charge,
+                			order_state,order_invoice,o.user_id, user_name,user_phone,
+                			user_email,code_name as order_state_name
+					from orders o,user_table u,code_info ci
+					<where>
+						o.user_id=u.user_id and ci.code=o.order_state and order_date between #{sDay} and TO_CHAR(TO_DATE(#{eDay},'YYYY-MM-DD')+1,'YYYY-MM-DD')
+						<if test="keyWord!=null and keyWord!=''">
+							<if test="keyField=='user_id'">
+								and o.${keyField} like '%' || #{keyWord} || '%'
+							</if>
+							<if test="keyField!='user_id'">
+								and ${keyField} like '%' || #{keyWord} || '%'
+							</if>
+						</if>
+						<if test="order_state!=null and order_state!='' and order_state!='all'">
+							and order_state=#{order_state}
+						</if>
+					</where>
+					order by order_date desc
+					)a)
+  <![CDATA[
+    where rnum >=#{start} AND rnum <=#{end}
+    ]]>
+</select>
+
+<!-- 주문번호에 해당하는 주문상품수 -->
+<select id="getOrderPrdCount" parameterType="String" resultType="int">
+	select count(*) from order_product where order_num=#{order_num}
+</select>
+
+<!-- 주문상세(1건) -->
+<select id="getOrders" parameterType="String" resultType="OrdersVO">
+	select o.*,user_name,user_phone,user_email, code_name as order_state_name
+	from orders o,user_table u, code_info c
+	where o.user_id=u.user_id and o.order_state=c.code 
+		and order_num=#{order_num}
+</select>
+
+<!-- 주문상품목록 -->
+<select id="getOrderPrdList" parameterType="String" resultType="CartPrdVO">
+	select op.product_code as product_code,product_img1,product_name,
+		order_product_count as cart_count ,order_product_price as product_price
+	 from product p, order_product op
+	where p.product_code= op.product_code and order_num=#{order_num}
+</select>
+
+<!-- 결제상세 -->
+<select id="getPayment" parameterType="String" resultType="PaymentVO">
+	select p.* , c.code_name as payment_name 
+	from payment p, code_info c 
+	where p.payment_type= c.code and order_num =#{order_num}
+</select>
+
+</mapper>

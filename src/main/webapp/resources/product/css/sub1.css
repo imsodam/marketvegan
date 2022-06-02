@@ -1,0 +1,43 @@
+/*menu*/
+#content {width: 1200px; margin: 0 auto;}
+#content .goods_list_item {position: relative; }
+#content .goods_list_item h2 {font-family: 'Nanum Gothic', sans-serif; font-weight: 600; font-size: 36px; margin-top:60px;color: #333;  text-align: center; letter-spacing: 20px;}
+#content .content_area {width: 1200px; margin-bottom: 150px; font-family: 'Nanum Gothic', sans-serif;}
+.content_area .slideMenu {overflow: hidden; position: relative; margin: 60px auto; text-transform: uppercase; width: 100%;}
+.content_area .slideMenu li {float: left; position: relative; width: calc(100% / 5); text-align: center;}
+.content_area .slideMenu li a:hover, .content_area .slideMenu .current {color: #0e5739; font-weight: 600;}
+.content_area .slideMenu li a {display: block; position: relative; font-size: 30px; transition: all .5s;}
+.content_area .slideMenu::after {position: absolute; top: 38px; z-index: 2; width: 100%; height: 1px;}
+.content_area .slideMenu::after, .content_area .slideMenu li a::after {content: ''; display: block; background: #ccc; transition: all .5s;}
+.content_area .slideMenu::after{position: absolute; top: 38px; z-index: 2; width:100%;height: 1px;}
+.content_area .slideMenu li a::after{position: relative; transition: all .5s ease; z-index: 10; margin: 3px auto;width: 10px;height: 10px;border-radius: 50%;}
+.content_area .slideMenu .current::after,
+.content_area .slideMenu li a:hover::after{background: #0e5739;border-radius: 2px;}
+
+
+/* 정육 */
+.boxMove1 {overflow: hidden; width: 1200px;}
+.content_area h3 {font-size: 40px; font-weight: 700; margin-bottom: 100px; text-align: center; letter-spacing: 10px;}
+.items {width: 300px;float:left; margin:50px 0 20px 80px;height:500px;}
+.items li {font-family: "돋움"; color: #666666;}
+.items li img {width: 300px; height: 380px; transform: scale(1); transition: all 0.3s;}
+.items li:hover img {transform:scale(1.1);}
+.items .a {font-weight: bold; font-size: 20px; color: black; margin-top: 20px;}
+.items .b {font-weight: bold; font-size: 16px; color: black; margin-top: 5px;}
+.items .b span {color: #a26f59;}
+.items .c {font-size: 15px; margin-top: 20px;}
+
+/*  유제품 */
+.boxMove2 {margin:0 auto 200px; display: flex; width: 100%;}
+
+/*  베이커리 */
+.boxMove3 {margin:0 auto 200px; display: flex; width: 100%;}
+
+/* 기타 */
+.boxMove4 {margin:0 auto 200px; display: flex; width: 100%;}
+
+/*  위로가기 버튼 */
+#topButton {cursor: pointer; position: fixed; right: 2%; bottom: 50px; display: none; z-index: 999;}
+#topButton img {width:80px;}
+
+

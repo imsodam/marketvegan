@@ -1,0 +1,76 @@
+/* content-best */
+#content {width: 1200px; padding-top: 50px; margin: 0 auto;}
+#content .category {margin: 0 auto; width: 100%; font-family:'Nanum Gothic'; font-weight:400; font-size:40px; letter-spacing: 10px;}
+.goods_list_item {text-align: center; margin-bottom:100px;}
+.good_pick_list {display: flex; flex-wrap: wrap; /* margin: 0 auto; */ width: 100%; justify-content: space-between; margin:0 0 150px 100px;}
+.items {width: 33%; display: flex; flex-direction: column; align-items: flex-start; margin-bottom:70px;}
+.items li {font-family: "돋움"; color: #666666;}
+.items li img {width: 300px; transform: scale(1); transition: all 0.3s;}
+.items li:hover img {transform:scale(1.1);}
+.items .a {font-weight: bold; font-size: 20px; color: black; margin-top: 20px;}
+.items .b {font-weight: bold;font-size: 16px; color: black; margin-top: 5px;}
+.items .b span {color: #a26f59;}
+.items .c {font-size: 15px; margin-top: 20px;}
+
+/*best-item1*/
+.product_view {position:relative; width: 1200px; padding:0 0 180px 395px;box-sizing: border-box;}
+.product_view h2 {font-family:'Nanum Gothic', sans-serif; font-size: 30px; margin-left: 280px; font-weight: 600;}
+.product_view h2:after {content: ""; display: block; width: 500px; border-bottom: 1px solid #eeeeee; margin: 25px 0px;}
+.product_view .img {position: absolute; margin-left: 40px;left:0;top:0;}
+#display{width:500px; height:500px;}
+.product_view .img li {float: left ;padding:20px 20px 0 0;}
+.product_view .img li img {width:120px; height:100px; padding-right:30px;} 
+.thumb{list-style: none; padding:0;margin:0;}
+.thumb li{width:100px; display: inline-block; cursor: pointer;}
+.thumb li img{width: 100%;}
+.product_view table {margin: 30px 0 0 290px;}
+.product_view table th {width:120px; padding:14px 0; font-size:15px; color: #9e9e9e ; text-align: left;font-family:'Nanum Gothic', sans-serif;}
+.product_view table td {padding:20px 0; font-size:22px;color: #4c4c4c; line-height: 20px;font-family:'Nanum Gothic', sans-serif; font-weight: 600;}
+.product_view table td.price {font-size:22px;font-family:'Nanum Gothic', sans-serif;font-weight: 600;}
+.product_view table td.total {font-size:22px;font-family:'Nanum Gothic', sans-serif;font-weight: 600;}
+.product_view table .length {position:relative; border:1px solid #eeeeee; width:71px; height:32px }
+.product_view table .length input {width:44px; height:32px; border:none;text-align: center; border-right:1px solid #eeeeee;}
+.product_view table .length a {overflow: hidden;position:absolute; right:0; width:26px; height:16px; color: transparent;}
+.product_view table .length a:nth-of-type(1) {top:0;}
+.product_view table .length a:nth-of-type(2) {bottom:0; border-top: 1px solid #eeeeee;}
+.product_view .btns {padding: 45px 0 150px 0; text-align:center;}
+.product_view .btns > a {display: inline-block; width:500px; height:42px; font-size: 16px; color:#fff; border-radius:2px; background:#0e5739; line-height: 42px; margin:0 300px 0 300px;
+letter-spacing: 5px;}
+
+/* 수량 */
+.qty {width: 114px; box-sizing: border-box; position: relative; display: inline-block; padding: 0 35px;}
+.qty input[type="text"]{width: 100%; height: 20px; text-align: center; font-size: 20px; border: 0; background: none;}
+.qty .plus img{position: absolute; top: 0; box-sizing: border-box; width: 20px; height: 20px; border: 1px solid #eeeeee;  font-size: 0; right:0;}
+.qty .minus img{position: absolute; top: 0; box-sizing: border-box; width: 20px; height: 20px; border: 1px solid #eeeeee; font-size: 0; left:0;}
+
+
+/* 상세정보 */
+.tabs {margin-top: 50px; padding-bottom: 40px; background-color: #ffffff; width: 1200px; margin: 0 auto; } 
+.tabs label:hover {cursor: pointer;}
+.tab_item {width: calc(100%/4); height: 50px; border-bottom: 2px solid #0e5739; background-color: #eeeeee;line-height: 50px; font-size: 16px;
+  color: #0e5739; font-weight: bold; transition: all 0.2s ease; display: block; float: left; text-align: center;}
+.tab_item:hover {opacity: 0.75;}
+
+/* 라디오 버튼 UI삭제*/
+input[name="tab_item"] {display: none;}
+
+/* 탭 컨텐츠 스타일 */
+.tab_content {display: none; padding: 40px 40px 0; clear: both; overflow: hidden;}
+
+/* 선택 된 탭 콘텐츠를 표시 */
+#all:checked ~ #all_content,
+#programming:checked ~ #programming_content,
+#design:checked ~ #design_content,
+#ask:checked ~ #ask_content
+{display: block;}
+
+/* 선택된 탭 스타일 */
+.tabs input:checked + .tab_item {background-color: #0e5739;color: #fff;}
+
+/*  탭 내용 */
+.tab_content .good_point h3 {display: inline-block; position: relative; z-index: 10; font-size: 50px;
+    width: 100%; margin: 100px 0 100px 0; font-weight: 700; font-family: noto sans; color: #666; text-align:center;}
+.tab_content .pic {margin:0 0 100px 160px; width:1100px;}
+.tab_content .pic2 {margin: 0 0 100px 30px;} 
+.tab_content2 .pic img {margin:100px 0 0 -30px;}
+

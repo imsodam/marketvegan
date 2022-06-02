@@ -1,0 +1,173 @@
+/* 전체 join 틀 */
+#agree_page {
+	width: 100%;
+	height: 1500px;
+	padding-top: 50px;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+/* 회원가입 글씨 틀 */
+#agree_page .agree_sub {
+	overflow: hidden;
+	width: 1050px;
+	margin: 0 auto;
+	padding: 50px 0 51px;
+}
+
+/* 회원가입 글씨 */
+#agree_page h2 {
+	text-align: center;
+	font-size: 30px;
+	font-family: 'Nanum Gothic', sans-serif;
+	color: #333
+}
+
+/* check 전체툴 */
+.agree_check {
+	width: 800px;
+	margin: 0 auto;
+}
+
+/* allcheck */
+.allcheck {
+	border-bottom: 2px solid #ccc;
+	border-top: 2px solid #ccc;
+	padding: 40px 10px;
+	margin-left: 0;
+	display: block;
+	position: relative;
+	left: -7px;
+	line-height: 1.7em;
+	letter-spacing: -.05em;
+	color: #4c4c4c;
+	font-size: 15px;
+	max-width: 100%;
+}
+
+/* check box */
+input[type=checkbox] {
+	display: none;
+}
+
+input[type="checkbox" i] {
+	background-color: initial;
+	cursor: default;
+	appearance: auto;
+	box-sizing: border-box;
+	margin: 3px 3px 3px 4px;
+	padding: initial;
+	border: initial;
+}
+
+input[type=checkbox]+label {
+	cursor: pointer;
+}
+
+input[type=checkbox]+label::after {
+	display: inline-block;
+	content: '';
+	width: 18px;
+	height: 18px;
+	background-color: transparent;
+	border: 2px solid #bcbcbc;
+	border-radius: 50%;
+	margin: 0px 0px -6px 10px;
+}
+
+input[type=checkbox]:checked+label::after {
+	content: '';
+	background: #0e5739 center center no-repeat;
+	border: 2px solid #ccc;
+}
+
+.allcheck input[type=checkbox]+label::after {
+	content: '';
+	position: absolute;
+	right: 1px;
+	top: 40%;
+}
+
+/* 서비스 이용약관 */
+.main {
+	overflow: hidden;
+	width: 100%;
+}
+
+/* 서비스 이용약관 글자 */
+#agree_page h4 {
+	color: #333;
+	font-size: 20px;
+	font-weight: 700;
+	margin-bottom: 30px;
+	float: left;
+	margin-top: 30px;
+}
+
+/* 서비스 이용약관 체크박스 */
+#agree_page .check {
+	float: right;
+	font-size: 14px;
+	color: #333;
+	margin: 35px 7px 0 0
+}
+
+/* 서비스이용약관 내용부분 */
+#agree_page .policy {
+	overflow-y: scroll;
+	height: 100px;
+	padding: 20px;
+	background: #f7f7f7;
+	font-size: 14px;
+	line-height: 1.8em;
+	margin: 10px 0;
+	border: 1px solid #ddd;
+}
+
+/* 버튼 */
+.button {
+	text-align: center;
+	margin: 70px 0 250px 20px;
+}
+
+.button .ok, .button button {
+	display: inline-block;
+	width: 200px;
+	line-height: 45px;
+	padding: 8px 0;
+	border: none;
+	background: #0e5739;
+	color: #fff;
+	font-size: 16px;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-weight: 550;
+	cursor: pointer;
+	margin-right: 20px;
+}
+
+.button .cancel {
+	display: inline-block;
+	width: 200px;
+	line-height: 45px;
+	padding: 8px 0;
+	border: none;
+	background: #999;
+	color: #fff;
+	font-size: 16px;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-weight: 550;
+	cursor: pointer;
+}
+
+/* up버튼 */
+#topButton {
+	cursor: pointer;
+	position: fixed;
+	right: 2%;
+	bottom: 50px;
+	display: none;
+	z-index: 999;
+}
+
+#topButton img {
+	width: 80px;
+}

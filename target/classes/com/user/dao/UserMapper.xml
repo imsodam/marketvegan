@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+
+<!-- 로그인 -->
+<select id="selectLogin" parameterType="UserVO" resultType="UserVO">
+	select * 
+	from user_table
+	where user_id=#{user_id} and user_pwd=pkg_crypto.encrypt (#{user_pwd})
+</select>
+<!-- 중복id체크 -->
+<select id="idCheck" parameterType="String" resultType="int">
+	select count(user_id)
+	from user_table
+	where user_id=#{user_id}
+</select>
+
+<!-- 중복email체크 -->
+<select id="emailCheck" parameterType="String" resultType="int">
+	select count(user_email)
+	from user_table
+	where user_email=#{user_email}
+</select>
+
+<!-- 회원정보가져오기 -->
+<select id="getUser" parameterType="String" resultType="UserVO">
+	select *
+	from user_table
+	where user_id=#{user_id}
+</select>
+<!-- 회원가입 -->
+<insert id="insertUser" parameterType="UserVO">
+	insert into user_table(
+		user_id,user_pwd,user_name,user_email,
+		user_phone,user_zipcode,user_addr1,user_addr2,
+		user_date,user_agree
+	)
+	values(
+		#{user_id},pkg_crypto.encrypt (#{user_pwd}),#{user_name},#{user_email},
+		#{user_phone},#{user_zipcode},#{user_addr1},#{user_addr2},
+		sysdate,'y'
+	)
+</insert>
+<!-- 회원정보 수정 -->
+<update id="updateUser" parameterType="UserVO">
+	update user_table set
+	user_name=#{user_name},
+	user_phone=#{user_phone},
+	user_email=#{user_email},
+	user_zipcode=#{user_zipcode},
+	user_addr1=#{user_addr1},
+	user_addr2=#{user_addr2}
+	<if test="user_pwd!=null and user_pwd!=''">
+		,user_pwd=pkg_crypto.encrypt (#{user_pwd})
+	</if>
+	where user_id=#{user_id}
+</update>
+
+<!-- 비밀번호 수정 -->
+<update id="updatePwd" parameterType="UserVO">
+	update user_table set
+		user_pwd=pkg_crypto.encrypt (#{user_pwd})
+	where user_id=#{user_id}
+</update>
+
+<!-- 회원 탈퇴 -->
+<update id="endUser" parameterType="String">
+	update user_table 
+	set user_end='y',user_end_date=sysdate 
+	where user_id=#{user_id}
+</update>
+<!-- 아이디,비번찾기 -->
+<select id="findUser" parameterType="UserVO" resultType="UserVO">
+	select *
+	from user_table
+	<where>
+		1>0
+		<if test="user_id!=null and user_id!=''">
+			and user_id=#{user_id} 
+		</if>
+		<if test="user_name!=null and user_name!=''">
+			and user_name=#{user_name} 
+		</if>
+		<if test="user_phone!=null and user_phone!=''">
+			and user_phone=#{user_phone}
+		</if>
+		<if test="user_email!=null and user_email!=''">
+			and user_email=#{user_email}
+		</if>
+	</where>
+</select>
+
+<!-- 회원 전체 레코드수 -->
+<select id="userListCount" parameterType="map" resultType="int">
+	select count(*) 
+	from user_table
+	<where>
+		<if test="keyWord!=null and keyWord!=''">
+			${keyField} like '%' || #{keyWord} || '%'
+		</if>
+	</where>
+</select> 
+<!-- 회원 목록 -->
+<select id="userSelectList" parameterType="map" resultType="UserVO">
+	 select *
+            from ( select a.*, rownum rnum
+                from (select * from user_table
+                   <where>
+                     <if test="keyWord!=null and keyWord!=''">
+						${keyField} like '%' || #{keyWord} || '%'
+					</if>
+                   </where>        
+                     order by user_date desc)a)
+  <![CDATA[
+    where rnum >=#{start} AND rnum <=#{end}
+    ]]>
+</select> 
+</mapper>

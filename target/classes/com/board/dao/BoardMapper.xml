@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+
+<!-- 글쓰기 -->
+<insert id="insertBoard" parameterType="BoardVO">
+	insert into board(
+		board_num,board_title,board_group,
+		board_content,board_img,
+		board_date,board_views,board_is_show,admin_id)
+	values(
+		board_seq.NEXTVAL,#{board_title},#{board_group},
+		#{board_content},#{board_img,jdbcType=VARCHAR},
+		sysdate,0,#{board_is_show},#{admin_id}
+	)	
+</insert>
+
+<!-- 글목록 -->
+<select id="getBoardList" parameterType="map" resultType="BoardVO">
+	select *
+    from ( select a.*, rownum rnum
+           from (select * from board
+            <where>
+            	board_group=#{board_group}
+            <if test="keyWord!=null and keyWord!=''">
+				and ${keyField} like '%' || #{keyWord} || '%'
+			</if>
+            </where>        
+                order by board_date desc)a)
+  <![CDATA[
+    where rnum >=#{start} AND rnum <=#{end}
+    ]]>
+</select>
+
+<!-- 글 총 레코드수 -->
+<select id="getBoardCount" parameterType="map" resultType="int">
+	select count(*) 
+	from board
+	<where>
+			board_group=#{board_group}
+		<if test="keyWord!=null and keyWord!=''">
+			and ${keyField} like '%' || #{keyWord} || '%'
+		</if>
+	</where>
+</select>
+
+<!-- 글 상세 -->
+<select id="getBoard" parameterType="String" resultType="BoardVO">
+	select *
+	from board
+	where board_num=#{board_num}
+</select>
+
+<!-- 이전,다음글 번호 구하기 -->
+<select id="getBoardPrevNext" parameterType="BoardVo" resultType="map">
+	SELECT A.*
+	FROM (
+	    SELECT
+	        board_num,
+	        BOARD_group,
+	        LEAD(board_num, 1) OVER (ORDER BY board_num DESC) AS next_num,
+	        LAG(board_num, 1) OVER (ORDER BY board_num DESC) AS prev_num
+	    FROM BOARD
+	    <where>
+			board_group=#{board_group}
+			<if test="keyWord!=null and keyWord!=''">
+				and ${keyField} like '%' || #{keyWord} || '%'
+			</if>
+		</where>
+	) A
+	WHERE board_num = ${board_num}
+</select>
+
+<!-- 조회수 업 -->
+<update id="udpateBoardViews" parameterType="String">
+	update board set
+	board_views=board_views+1
+	where board_num=#{board_num}
+</update>
+<!-- 글 수정 -->
+<update id="updateBoard" parameterType="BoardVO">
+	update board set
+		board_title=#{board_title},
+		board_content=#{board_content},
+		board_views=#{board_views},
+		board_is_show=#{board_is_show}
+		<if test="board_img!=null">
+			,board_img=#{board_img,jdbcType=VARCHAR}
+		</if>
+	where board_num=#{board_num}
+</update>
+
+<!-- 글삭제 -->
+<delete id="deleteBoard" parameterType="String">
+	delete from board
+	where board_num=#{board_num}
+</delete>
+
+</mapper>

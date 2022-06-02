@@ -1,0 +1,181 @@
+@charset "UTF-8";
+* {
+    box-sizing: border-box;
+}
+
+/* 전체페이지 틀 */
+#id_search {
+    width: 100%;
+    height: 650px;
+    padding-top: 50px;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+/* 히든클래스 */
+.id_search1 {
+    min-height: 56px;
+    display: none;
+}
+
+/* 아이디 찾기 틀 */
+.id_search_sub {
+    overflow: hidden;
+    width: 1050px;
+    margin: 0 auto 20px;
+    padding: 50px 0 51px;
+}
+
+/* 아이디 찾기 */
+.id_search_name {
+    text-align: center;
+    font-size: 30px;
+    color: #333
+}
+
+/* 인증 틀 */
+.certification {
+    max-width: 400px;
+    padding: 0 10px 6px 10px;
+    margin: auto;
+    position: relative;
+    background-color: white;
+}
+
+/* 휴대폰, 이메일 인증 틀 */
+.id_certification {
+    padding: 0 15px 0 15px;
+    margin: 0;
+    box-shadow: inset 0 -0.5px 0 0 #ddd;
+    display: flex;
+    flex-wrap: nowrap;
+    text-align: center;
+    background-color: white;
+}
+
+/* 휴대폰 인증 */
+.certification_bt {
+    display: block;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    position: relative;
+    height: 48px;
+    font-weight: 600;
+    font-size: 16px;
+    font-family: 'Nanum Gothic', sans-serif;
+    color: #333;
+    line-height: 18px;
+    border:none;
+    background-color:#ffffff;
+}
+
+.on {box-shadow: inset 0px -2px 0px 0px #0e5739; color:#0e5739;}
+
+/* form태그 틀 */
+.search {
+    padding: 24px 20px;
+}
+
+/* 이름 틀 */
+.name_search1 {
+    padding-bottom: 12px;
+}
+
+/* 이름 */
+.name {
+    display: inline-block;
+    padding: 8px 0 11px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 19px;
+    color: #333;
+}  
+
+/* 이름 칸 틀 */
+.name_search2 {
+    position: relative;
+    height: 48px;
+}
+
+/* 이름 칸 */
+.name1 { 
+    width: 100%;
+    height: 46px;
+    padding: 0 11px 1px 15px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: noto sans;
+    line-height: 1.5;
+    color: #333;
+    outline: none;
+}
+
+/* 휴대폰번호 틀 */
+.phone_search {
+    margin-top: 8px;
+}
+
+/* 휴대폰번호 틀2 */
+.phone_search1 {
+    padding-bottom: 12px;
+}
+
+/* 휴대폰번호 */
+.phone {
+    display: inline-block;
+    padding: 8px 0 11px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 19px;
+    color: #333;
+}
+
+/* 휴대폰번호 칸 틀 */
+.phone_search2 {
+    position: relative;
+    height: 48px;
+}
+
+/* 휴대폰번호 칸 */
+.phone1 { 
+    width: 100%;
+    height: 46px;
+    padding: 0 11px 1px 15px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: noto sans;
+    line-height: 1.5;
+    color: #333;
+    outline: none;
+}
+
+/* 아이디 찾기 틀 */
+.find_id {
+    margin-top: 18px;
+}
+
+/* 아이디 찾기 버튼 */
+.find_id1:disabled {
+    background-color: #ddd;
+}
+.find_id1 {
+    display: block;
+    padding: 0 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    height: 52px;
+    border-radius: 4px;
+    color: #fff;
+    border: 0 none;
+}
+
+/* 아이디 찾기 글씨 */
+.find_id2 {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+}

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="product">
+<!-- 카테고리 목록 -->
+<select id="getCategoryList" resultType="CategoryVO">
+	select * from category
+</select>
+<!-- 상품목록  -->
+<select id="productSelectList" parameterType="map" resultType="ProductVO">
+	select *
+		 from ( select a.*, rownum rnum
+                from (select * from product
+                		<where>
+                          1>0 
+                         <if test="category_code!=null and category_code!=''">
+                         	and category_code=#{category_code}
+                         </if>
+                         <if test="keyWord!=null and keyWord!=''">
+                         	and product_name like '%' || #{keyWord} || '%'
+                         </if>
+                         <if test="page!=null and page!='' and page=='discount'">
+                         	and product_discount >= 10 
+                         </if>
+                         </where>
+                     <trim prefix="ORDER BY">
+                    
+                     <if test="page!=null and page!='' and page=='best'">
+                     	product_sales desc ,
+                     </if>
+                     product_code desc 
+                     </trim>
+                     )a
+                     <where>
+                         <if test="page!=null and page!='' and page=='best'">
+	                     	<![CDATA[ROWNUM <=12 ]]>
+	                     </if>
+                     </where>
+                     
+                     ) 
+	    <![CDATA[
+	    where rnum >=#{start} AND rnum <=#{end}
+	    ]]>
+
+</select>
+
+<!-- 상품 총 레코드수 -->
+<select id="productSelectCount" parameterType="map" resultType="int">
+	select count(*) from product
+	<where>
+      1>0 
+     <if test="category_code!=null and category_code!=''">
+     	and category_code=#{category_code}
+     </if>
+     <if test="keyWord!=null and keyWord!=''">
+     	and product_name like '%' || #{keyWord} || '%'
+     </if>
+     <if test="page!=null and page!='' and page=='discount'">
+     	and product_discount >= 10 
+     </if>
+      <if test="page!=null and page!='' and page=='best'">
+    	<![CDATA[and ROWNUM <=12 ]]>
+      </if>
+     </where>
+</select>
+
+<!-- 상품 상세 -->
+<select id="productSelect" parameterType="Integer" resultType="ProductVO">
+	select * 
+	from product 
+	where product_code=#{product_code} and product_is_show='y'
+</select>
+
+<!-- 상품코드 max값 구하기 -->
+<select id="getMaxCode" resultType="int">
+	select max(product_code) from product
+</select>
+
+<!-- 상품등록 -->
+<insert id="insertProduct" parameterType="ProductVO">
+	insert into product 
+	(product_code,product_name,product_content,product_price,
+	product_delivery_charge,product_update,product_date,product_views,
+	product_sales,product_review,product_is_show,product_discount,
+	product_img1,product_img2,product_img3,product_img4,category_code)
+	values
+	(#{product_code},#{product_name},#{product_content},#{product_price},
+	#{product_delivery_charge},sysdate,sysdate,0,
+	0,0,#{product_is_show},#{product_discount},
+	#{product_img1},#{product_img2},#{product_img3},#{product_img4},#{category_code})
+</insert>
+
+<!-- 상품삭제 -->
+<delete id="deleteProduct" parameterType="Integer">
+	delete from product where product_code=#{product_code}
+</delete>
+
+<!-- 상품수정 -->
+<update id="updateProduct"  parameterType="ProductVO">
+	update product set
+	product_is_show=#{product_is_show},
+	product_name=#{product_name},
+	product_content=#{product_content},
+	product_price=#{product_price},
+	product_delivery_charge=#{product_delivery_charge},
+	product_discount=#{product_discount},
+	category_code=#{category_code}
+	<if test="product_img1!=null">
+		,product_img1=#{product_img1:VARCHAR}
+	</if>
+	<if test="product_img2!=null">
+		,product_img2=#{product_img2:VARCHAR}
+	</if>
+	<if test="product_img3!=null">
+		,product_img3=#{product_img3:VARCHAR}
+	</if>
+	<if test="product_img4!=null">
+		,product_img4=#{product_img4:VARCHAR}
+	</if>
+	where product_code=#{product_code}
+
+</update>
+</mapper>

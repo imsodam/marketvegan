@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+.order_container {
+    margin-top: 20px;
+    font-family: 'Nanum Gothic', sans-serif;
+    overflow: hidden;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: normal;
+    letter-spacing: 0;
+}
+
+.order_list_page {
+    float: lert;
+    margin-left: 20px;
+}
+
+.order_list_page .title {
+    overflow: hidden;
+    border-bottom: 2px solid #000;
+    padding: 6px 0 20px 0;
+}
+
+.title_sub {
+    font-size: 12px;
+    color: #666;
+    line-height: 17px;
+	padding-top: 5px;
+	font-weight: 500;
+}
+
+.title_sub2 {
+	font-size: 20px;
+    line-height: 40px;
+    padding-bottom: 20px;
+}
+
+
+
+#tbl_comm .fst th {
+    padding-top: 29px;
+}
+
+
+/* 아이디 입력 글씨 툴 */
+#tbl_comm th {
+    padding: 20px 50px 0 20px;
+    font-weight: 700;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    vertical-align: top;
+    text-align: left;
+}
+
+
+/* 아이디 입력 칸 툴 */
+#tbl_comm .fst td {
+    padding-top: 19px;
+}
+
+#tbl_comm td {
+    padding: 10px 0;
+    border-top: 0;
+    font-size: 14px;
+    vertical-align: top;
+    text-align: left;
+}
+
+#tbl_comm input[type=text],
+#tbl_comm input[type=password] {
+    width: 332px;
+}
+
+#tbl_comm input[type=text],
+#tbl_comm input[type=password] {
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    font-weight: 400;
+    font-family: noto sans;
+    letter-spacing: 0;
+    border-radius: 3px;
+    background: #fff;
+    outline: none;
+    vertical-align: top;
+}
+
+.formSubmit {
+    text-align: center;
+    margin: 50px 0px 0px 0px;
+  
+}
+
+.btn_pwd {
+    display: inline-block;
+    width: 200px;
+    line-height: 45px;
+    padding: 8px 0;
+    border: none;
+    background: #0e5739;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 550;
+    cursor: pointer;
+    margin-right: 20px;
+}
