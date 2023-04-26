@@ -4,9 +4,9 @@
 
 # 개발 환경 및 개발 언어
 * 개발 환경
-    * eclipse, jdk1.8, springframework 
+    * eclipse, jdk1.8
 * 개발 언어
-    * HTML, CSS, javascript, Jquery, JAVA, JSP, mybatis
+    * HTML, CSS, javascript, Jquery, JAVA, JSP
 * 서버
     * Tomcat/9.0.56
 * DATABASE
